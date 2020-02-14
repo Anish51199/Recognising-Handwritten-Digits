@@ -45,8 +45,8 @@ model.add(Dropout(0.25))
 model.add(Dense(10,activation='softmax'))
 
 model.compile(loss=keras.losses.categorical_crossentropy,optimizer=keras.optimizers.Adadelta(),metrics=['accuracy'])
-
- model.save('mnist.h5')
+model.fit(x_train,y_train, batch_size=128, epochs=100, validation_data=(x_test,y_test))
+model.save('mnist.h5')
 
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
